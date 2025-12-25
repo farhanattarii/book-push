@@ -52,21 +52,6 @@ const config = {
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
-        },
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -80,22 +65,91 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       colorMode: {
+        defaultMode: 'light',
+        disableSwitch: false,
         respectPrefersColorScheme: true,
+      },
+      // Performance optimizations
+      metadata: [
+        {name: 'theme-color', content: '#2563eb'},
+        {name: 'msapplication-TileColor', content: '#2563eb'},
+        {name: 'viewport', content: 'width=device-width, initial-scale=1.0, viewport-fit=cover'},
+      ],
+      algolia: {
+        // The application ID provided by Algolia
+        appId: 'YOUR_APP_ID',
+        // Public API key: it is safe to commit it
+        apiKey: 'YOUR_SEARCH_API_KEY',
+        indexName: 'your-index-name',
+        // Optional: see doc section below
+        contextualSearch: true,
+        // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+        externalUrlRegex: 'external\\.example\\.com|thirdparty\\.example\\.com',
+        // Optional: see doc section below
+        replaceSearchResultPathname: {
+          from: '/docs/',
+          to: '/',
+        },
+        // Optional: Algolia search parameters
+        searchParameters: {},
+        // Optional: path for search page that enabled by default (`false` to disable it)
+        searchPagePath: 'search',
+      },
+      // Performance optimizations
+      prism: {
+        theme: prismThemes.github,
+        darkTheme: prismThemes.dracula,
+        additionalLanguages: ['bash', 'json', 'python', 'javascript', 'typescript', 'java', 'cpp', 'csharp'],
+        magicComments: [
+          // Remember to extend the default highlight class name as well!
+          {
+            className: 'theme-code-block-highlighted-line',
+            line: 'highlight-next-line',
+            block: {start: 'highlight-start', end: 'highlight-end'},
+          },
+          {
+            className: 'code-block-error-line',
+            line: 'error-line',
+            block: {start: 'error-line-start', end: 'error-line-end'},
+          },
+        ],
       },
       navbar: {
         title: 'ROS 2 Nervous System',
-        logo: {
-          alt: 'ROS 2 Nervous System Logo',
-          src: 'img/logo.svg',
-        },
         items: [
           {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Module 1',
+            label: 'Docs',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          {
+            type: 'dropdown',
+            label: 'Modules',
+            position: 'left',
+            items: [
+              {
+                label: 'Module 1: ROS 2 Nervous System',
+                to: '/docs/module-1-ros2-nervous-system/introduction-to-ros2',
+              },
+              {
+                label: 'Module 2: Digital Twin',
+                to: '/docs/module-2-digital-twin/digital-twins-hri-unity',
+              },
+              {
+                label: 'Module 3: AI Robot Brain',
+                to: '/docs/Module-3-AI-Robot-Brain/chapter-1-nvidia-isaac-sim',
+              },
+              {
+                label: 'Module 4: VLA Robotics',
+                to: '/docs/module-4-vla-robotics/voice-to-action-whisper',
+              },
+            ],
+          },
+          {
+            type: 'search',
+            position: 'right',
+          },
           {
             href: 'https://github.com/facebook/docusaurus',
             label: 'GitHub',
@@ -135,10 +189,6 @@ const config = {
           {
             title: 'More',
             items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
               {
                 label: 'GitHub',
                 href: 'https://github.com/facebook/docusaurus',

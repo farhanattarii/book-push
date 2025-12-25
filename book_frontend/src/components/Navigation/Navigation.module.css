@@ -1,0 +1,242 @@
+.navigation {
+  background-color: var(--ifm-background-surface-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.navigationContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.navBrand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.navLogo {
+  height: 2rem;
+  width: auto;
+  display: flex;
+  align-items: center;
+}
+
+.logoImg {
+  height: 100%;
+  width: auto;
+  max-height: 2rem;
+}
+
+.navTitle {
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-lg);
+  color: var(--ifm-color-emphasis-900);
+  text-decoration: none;
+}
+
+.navTitle:hover {
+  color: var(--ifm-color-primary);
+}
+
+.navDesktop {
+  display: flex;
+  align-items: center;
+}
+
+.navList {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 1.5rem;
+}
+
+.navItem {
+  margin: 0;
+}
+
+.navLink {
+  text-decoration: none;
+  color: var(--ifm-color-emphasis-700);
+  font-weight: var(--font-weight-medium);
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.navLink:hover {
+  color: var(--ifm-color-primary);
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+.navLinkActive {
+  color: var(--ifm-color-primary);
+  background-color: color-mix(in srgb, var(--ifm-color-primary) 10%, transparent);
+  font-weight: var(--font-weight-semibold);
+}
+
+.navSeparator {
+  color: var(--ifm-color-emphasis-500);
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.5rem 0.75rem;
+}
+
+.navMobileToggle {
+  display: none;
+}
+
+.navToggleButton {
+  background: none;
+  border: none;
+  color: var(--ifm-color-emphasis-700);
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s ease;
+}
+
+.navToggleButton:hover {
+  background-color: var(--ifm-color-emphasis-100);
+  color: var(--ifm-color-primary);
+}
+
+.navMobileMenu {
+  display: none;
+  background-color: var(--ifm-background-surface-color);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navMobileList {
+  list-style: none;
+  margin: 0;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.navMobileItem {
+  margin: 0;
+}
+
+.navMobileLink {
+  display: block;
+  text-decoration: none;
+  color: var(--ifm-color-emphasis-700);
+  font-weight: var(--font-weight-medium);
+  padding: 0.75rem 1rem;
+  border-radius: 0.375rem;
+  transition: all 0.2s ease;
+}
+
+.navMobileLink:hover {
+  color: var(--ifm-color-primary);
+  background-color: var(--ifm-color-emphasis-100);
+}
+
+.navMobileLinkActive {
+  color: var(--ifm-color-primary);
+  background-color: color-mix(in srgb, var(--ifm-color-primary) 10%, transparent);
+  font-weight: var(--font-weight-semibold);
+}
+
+.navMobileSeparator {
+  color: var(--ifm-color-emphasis-500);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.75rem 1rem;
+}
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+  .navList {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 996px) {
+  .navDesktop {
+    display: none;
+  }
+
+  .navMobileToggle {
+    display: block;
+  }
+
+  .navMobileMenu {
+    display: block;
+    position: fixed;
+    top: 4rem;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+  }
+
+  .navMobileList {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .navMobileItem {
+    width: 100%;
+  }
+
+  .navMobileLink {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
+
+@media (max-width: 768px) {
+  .navigationContainer {
+    padding: 0.5rem;
+  }
+
+  .navBrand {
+    gap: 0.5rem;
+  }
+
+  .navTitle {
+    font-size: var(--font-size-base);
+  }
+
+  .navMobileMenu {
+    top: 3.5rem;
+    max-height: calc(100vh - 3.5rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .navigationContainer {
+    padding: 0.25rem;
+  }
+
+  .navTitle {
+    font-size: var(--font-size-sm);
+  }
+
+  .logoImg {
+    max-height: 1.5rem;
+  }
+
+  .navToggleButton {
+    padding: 0.25rem;
+  }
+}

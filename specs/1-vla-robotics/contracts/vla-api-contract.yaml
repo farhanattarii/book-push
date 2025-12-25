@@ -1,0 +1,195 @@
+# VLA System API Contract
+
+## Overview
+This document defines the API contracts for the Vision-Language-Action (VLA) system that converts voice commands to ROS 2 robot actions.
+
+## Base URL
+`http://localhost:8000/api/v1`
+
+## Authentication
+All endpoints require an API key in the header:
+```
+Authorization: Bearer {OPENAI_API_KEY}
+```
+
+## Endpoints
+
+### POST /voice-command
+Submit a voice command for processing.
+
+#### Request
+```json
+{
+  "audio_data": "base64_encoded_audio",
+  "user_id": "string",
+  "command_context": "string (optional context for the command)"
+}
+```
+
+#### Response
+```json
+{
+  "command_id": "string",
+  "transcription": "string",
+  "confidence": "float (0.0-1.0)",
+  "status": "string (pending/processed/failed)",
+  "timestamp": "datetime"
+}
+```
+
+#### Success Response (201 Created)
+- Status: 201
+- Body: The created voice command object
+
+#### Error Responses
+- 400: Invalid audio format or empty command
+- 401: Invalid API key
+- 422: Audio transcription failed
+- 500: Internal server error during processing
+
+---
+
+### GET /voice-command/{command_id}
+Get the status and results of a voice command processing.
+
+#### Response
+```json
+{
+  "command_id": "string",
+  "transcription": "string",
+  "cognitive_plan": {
+    "actions": [
+      {
+        "action_type": "string",
+        "parameters": "object",
+        "safety_validation": {
+          "passed": "boolean",
+          "violations": ["string"]
+        }
+      }
+    ],
+    "reasoning": "string"
+  },
+  "status": "string (pending/approved/rejected/executed/failed)",
+  "execution_results": [
+    {
+      "action_id": "string",
+      "result": "string",
+      "timestamp": "datetime"
+    }
+  ],
+  "timestamp": "datetime"
+}
+```
+
+#### Success Response (200 OK)
+- Status: 200
+- Body: The voice command object with processing results
+
+#### Error Responses
+- 404: Command ID not found
+- 401: Invalid API key
+
+---
+
+### POST /cognitive-plan
+Manually submit a text command for cognitive planning (without voice input).
+
+#### Request
+```json
+{
+  "text_command": "string",
+  "user_id": "string",
+  "command_context": "string (optional context for the command)"
+}
+```
+
+#### Response
+```json
+{
+  "plan_id": "string",
+  "text_command": "string",
+  "action_sequence": [
+    {
+      "action_type": "string",
+      "parameters": "object",
+      "safety_validation": {
+        "passed": "boolean",
+        "violations": ["string"]
+      }
+    }
+  ],
+  "reasoning": "string",
+  "status": "string (pending/approved/rejected)",
+  "timestamp": "datetime"
+}
+```
+
+#### Success Response (201 Created)
+- Status: 201
+- Body: The created cognitive plan object
+
+#### Error Responses
+- 400: Empty or invalid command
+- 401: Invalid API key
+- 422: Command could not be parsed into actions
+- 500: Internal server error during planning
+
+---
+
+### POST /execute-plan
+Execute a cognitive plan on the robot.
+
+#### Request
+```json
+{
+  "plan_id": "string",
+  "robot_id": "string (optional, defaults to primary robot)"
+}
+```
+
+#### Response
+```json
+{
+  "execution_id": "string",
+  "plan_id": "string",
+  "robot_id": "string",
+  "action_results": [
+    {
+      "action_id": "string",
+      "action_type": "string",
+      "status": "string (success/failed/error)",
+      "message": "string (optional details)",
+      "timestamp": "datetime"
+    }
+  ],
+  "overall_status": "string (success/partial/failure)",
+  "start_time": "datetime",
+  "end_time": "datetime"
+}
+```
+
+#### Success Response (200 OK)
+- Status: 200
+- Body: The execution results object
+
+#### Error Responses
+- 400: Invalid plan ID or robot ID
+- 401: Invalid API key
+- 409: Robot is busy with another task
+- 422: Plan contains unsafe actions
+- 500: Robot communication error
+
+---
+
+## Error Format
+All error responses follow this format:
+```json
+{
+  "error": {
+    "code": "string (error code)",
+    "message": "string (human-readable error message)",
+    "details": "object (optional detailed error information)"
+  }
+}
+```

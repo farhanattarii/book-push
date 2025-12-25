@@ -1,55 +1,51 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report:
+- Version change: 1.0.0 → 1.1.0
+- Modified principles:
+  - [PRINCIPLE_1_NAME] → "Spec-First Workflow"
+  - [PRINCIPLE_2_NAME] → "Technical Accuracy from Official Sources"
+  - [PRINCIPLE_3_NAME] → "Clear, Developer-Focused Writing"
+  - [PRINCIPLE_4_NAME] → "Reproducible Setup and Deployment"
+  - [PRINCIPLE_5_NAME] → "Quality Standards and Documentation"
+  - [PRINCIPLE_6_NAME] → "No Hallucination Policy"
+- Added sections: None
+- Removed sections: None
+- Templates requiring updates:
+  - .specify/templates/plan-template.md ✅ updated
+  - .specify/templates/spec-template.md ✅ updated
+  - .specify/templates/tasks-template.md ✅ updated
+- Follow-up TODOs: None
+-->
+
+# AI/Spec-Driven Book with Embedded RAG Chatbot Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### Spec-First Workflow
+Spec-First workflow using Spec-Kit Plus: All development begins with comprehensive specifications that define requirements, interfaces, and acceptance criteria before any implementation work begins. This ensures alignment between stakeholders and reduces costly rework.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### Technical Accuracy from Official Sources
+Technical accuracy from official sources: All content and code examples must be verified against official documentation and authoritative sources. No information should be based on assumptions or unofficial resources that could lead to inaccuracies.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### Clear, Developer-Focused Writing
+Clear, developer-focused writing: All documentation and explanations must prioritize clarity and practical utility for developers. Content should be accessible, actionable, and focused on solving real-world problems with concrete examples.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### Reproducible Setup and Deployment
+Reproducible setup and deployment: All development environments, build processes, and deployment procedures must be fully documented and reproducible. This ensures consistent experiences across all team members and environments.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### Quality Standards and Documentation
+Runnable, well-documented code: All code examples must be functional, tested, and accompanied by clear documentation explaining purpose, usage, and expected outcomes. Code quality and maintainability are essential.
 
-### [PRINCIPLE_6_NAME]
+### No Hallucination Policy
+No hallucinated responses: The RAG chatbot must be grounded only in book content or user-selected text. It must never generate responses based on fabricated or hallucinated information that is not present in the provided context.
 
+## Technology Stack and Standards
+Technology stack requirements and deployment policies: The book is written with Docusaurus and deployed on GitHub Pages. The RAG chatbot uses OpenAI Agents/ChatKit, FastAPI, Neon Postgres, and Qdrant Cloud. All components must follow modern best practices for security, performance, and maintainability.
 
-[PRINCIPLE__DESCRIPTION]
-
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
-
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
-
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+## Development Workflow and Success Criteria
+Development workflow, quality gates, and success metrics: GitHub-based source control is mandatory. All specifications must be implemented via Spec-Kit Plus. Success is measured by having a live book on GitHub Pages with a fully functional embedded RAG chatbot that meets all specified requirements.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
+This constitution governs all aspects of the AI/Spec-Driven Book with Embedded RAG Chatbot project. All development activities, code reviews, and project decisions must comply with these principles. Amendments to this constitution require explicit approval and must be documented with clear justification.
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
-
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: 1.1.0 | **Ratified**: 2025-01-01 | **Last Amended**: 2025-12-18
