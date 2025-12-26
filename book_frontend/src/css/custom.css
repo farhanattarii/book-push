@@ -480,12 +480,9 @@ img {
   margin-top: var(--spacing-2xl);
 }
 
-.footer__container {
+.footer .container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
 }
 
 .footer__links {
