@@ -1,0 +1,76 @@
+.callout {
+  border-radius: 0.5rem;
+  padding: var(--spacing-md);
+  margin: var(--spacing-md) 0;
+  border-left-width: 4px;
+  border-left-style: solid;
+  background-color: var(--ifm-color-emphasis-100);
+  position: relative;
+  overflow: hidden;
+}
+
+.calloutHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.calloutIcon {
+  flex-shrink: 0;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.calloutTitle {
+  margin: 0;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--ifm-color-emphasis-900);
+}
+
+.calloutBody {
+  color: var(--ifm-color-emphasis-700);
+  line-height: 1.6;
+}
+
+/* Type variants */
+.callout--note {
+  border-left-color: var(--ifm-color-info);
+  background-color: color-mix(in srgb, var(--ifm-color-info) 10%, transparent);
+}
+
+.callout--tip {
+  border-left-color: var(--ifm-color-success);
+  background-color: color-mix(in srgb, var(--ifm-color-success) 10%, transparent);
+}
+
+.callout--warning {
+  border-left-color: var(--ifm-color-warning);
+  background-color: color-mix(in srgb, var(--ifm-color-warning) 10%, transparent);
+}
+
+.callout--danger {
+  border-left-color: var(--ifm-color-danger);
+  background-color: color-mix(in srgb, var(--ifm-color-danger) 10%, transparent);
+}
+
+.callout--success {
+  border-left-color: var(--ifm-color-success);
+  background-color: color-mix(in srgb, var(--ifm-color-success) 10%, transparent);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .callout {
+    padding: var(--spacing-sm);
+  }
+
+  .calloutTitle {
+    font-size: var(--font-size-sm);
+  }
+
+  .calloutHeader {
+    gap: var(--spacing-xs);
+  }
+}
