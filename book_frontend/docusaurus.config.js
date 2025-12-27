@@ -27,8 +27,8 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'farhanattarii', // Usually your GitHub org/user name.
+  projectName: 'book-push', // Usually your repo name.
 
   onBrokenLinks: 'throw',
 
@@ -67,7 +67,7 @@ const config = {
       colorMode: {
         defaultMode: 'light',
         disableSwitch: true,
-        respectPrefersColorScheme: true,
+        respectPrefersColorScheme: false,
       },
       // Performance optimizations
       metadata: [
@@ -197,10 +197,6 @@ const config = {
           },
         ],
         copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
-      },
-      prism: {
-        theme: prismThemes.github,
-        darkTheme: prismThemes.dracula,
       },
     }),
 };
